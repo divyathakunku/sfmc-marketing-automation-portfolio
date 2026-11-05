@@ -52,3 +52,19 @@ The following images have been prepared with identifying email addresses and sen
 - Verify the Platinum activity is linked to the Platinum email definition, not Silver. The negative test alone does not prove the activity is misconfigured; it demonstrates that the wrong template was previewed for that customer.
 - Confirm the final Gold/Silver/Platinum message definitions and CTA destinations.
 - Do not publish actual email addresses or account-specific sender identities, and do not interpret Journey Builder Test Mode as proof of sending or delivery.
+
+## Routing simulation retest — November 5, 2026
+
+The latest Version 2 Journey Builder Test Mode screenshots visibly highlight the expected email branch for **all three contacts**:
+
+| Contact | Loyalty tier | Expected email activity | Simulation result | Planned image filename |
+| --- | --- | --- | --- | --- |
+| C1001 / John | Gold | `Email_01_Welcome_Gold` | **Pass**: Gold route highlighted | `screenshots/21-gold-routing-test.png` |
+| C1002 / Sarah | Silver | `Email_02_Welcome_Silver` | **Pass**: Silver route highlighted | `screenshots/22-silver-routing-test.png` |
+| C1003 / David | Platinum | `Email_03_Welcome_Platinum` | **Pass**: Platinum route highlighted | `screenshots/23-platinum-routing-test.png` |
+
+**Routing test result:** 3/3 passed (100%) for these three synthetic contacts. This measures routing test assertions only, not message delivery, click-through, or conversion.
+
+**Publication status:** Redacted screenshots have been prepared separately. The PNGs must be uploaded into the paths above before those filenames represent published repository assets.
+
+**Next verification:** Open each Email activity's **Activity Summary** and confirm **Message Definition** matches `Welcome_Email_Gold`, `Welcome_Email_Silver`, and `Welcome_Email_Platinum` respectively. Activity labels and route simulation do not prove which actual message is linked.
