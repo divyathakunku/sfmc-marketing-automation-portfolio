@@ -1,84 +1,70 @@
-# ACME Rewards Journey — Test evidence
+# ACME Rewards | Salesforce Journey Builder test evidence
 
-**Platform:** Salesforce Marketing Cloud Engagement  
-**Journey:** ACME Rewards Journey, Version 2 (draft during simulation)  
-**Entry source:** `DE_Customer_onboarding`  
-**Sample size:** 3 synthetic customer profiles using controlled test inboxes  
-**Scope:** Journey Builder Test Mode and Content Builder subscriber preview; **not** production delivery evidence.
+**Evidence captured:** November 2026  
+**Journey:** ACME Rewards Journey, Version 2  
+**Entry source:** `DE_Customer_onboarding` (3 controlled test records)  
+**Test mode:** Journey Builder simulation and Content Builder Subscriber Preview; **no actual delivery demonstrated**
 
-## Test scenarios
+## Evidence index
 
-| Customer ID | Loyalty tier | Intended branch | Screenshot |
-| --- | --- | --- | --- |
-| C1001 | Gold | Gold welcome email | `screenshots/11-journey-test-gold-path.png` |
-| C1002 | Silver | Silver welcome email | `screenshots/12-journey-test-silver-path.png` |
-| C1003 | Platinum | Platinum welcome email | `screenshots/13-journey-test-platinum-path.png` |
-
-The screenshots document the three selected test contacts and their journey paths. The Silver and Platinum screenshots visibly highlight their respective branches. Confirm the Gold path and the individual message definitions before asserting that all three paths passed.
-
-## Screenshot inventory
-
-- `10-journey-test-selected-contacts.png` — three contacts selected for a simulated journey test.
-- `11-journey-test-gold-path.png` — first test contact, C1001 (Gold).
-- `12-journey-test-silver-path.png` — second test contact, C1002 (Silver), with highlighted Silver route.
-- `13-journey-test-platinum-path.png` — third test contact, C1003 (Platinum), with highlighted Platinum route.
-- `14-gold-email-preview-final.png` — personalised Gold email preview for C1001, showing the rendered greeting.
-
-Screenshots belong under `01-customer-onboarding/screenshots/`. Ensure all exported images are redacted before making them public.
-
-## Further validation required
-
-1. Confirm each Decision Split branch condition and that its Message Definition points to the corresponding Gold, Silver, or Platinum Content Builder email.
-2. Capture personalised subscriber previews for the Silver and Platinum emails.
-3. Save a successful full-journey validation result and confirm the Gold route highlight.
-4. Test the CTA links, sender classification, footer, and unsubscribe behaviour before live sending.
-5. If sending is deliberately enabled, record delivery analytics separately. Simulation does **not** send email or demonstrate a delivery/conversion rate.
-
-## Additional evidence captured — November 5, 2026
-
-The following images have been prepared with identifying email addresses and sender details redacted. Their filenames are planned paths; upload the PNGs before treating these links as published GitHub evidence.
-
-| Planned screenshot | Observation | Test status |
+| Group | Evidence | Screenshot |
 | --- | --- | --- |
-| `screenshots/15-decision-split-rules.png` | Rules display `LoyaltyTier equal Gold`, `Silver`, and `Platinum` | Configured (visual evidence) |
-| `screenshots/16-silver-email-preview.png` | C1002 (Sarah, Silver) displays 'Hi Sarah' and Silver content | Preview passed |
-| `screenshots/17-negative-test-platinum-in-silver-email.png` | C1003 (David, Platinum) displays 'Hi David' **but the Silver subject/content** | Expected negative test: wrong email template for Platinum, not a Platinum preview pass |
-| `screenshots/18-journey-validation-recommendation.png` | Validation displays **1 recommendation** to enable High-Throughput Sending, and no blocking error visible | Validation review completed; optional recommendation pending |
-| `screenshots/19-journey-canvas-version2.png` | Version 2 canvas shows all 3 named email branches and the Remainder exit | Structure captured |
+| Audience | Selected 3 contacts | [10](../screenshots/10-journey-test-selected-contacts.png) |
+| Rules | Gold / Silver / Platinum Decision Split | [15](../screenshots/15-decision-split-rules.png) |
+| Canvas | Final Version 2 topology | [19](../screenshots/19-journey-canvas-version2.png) |
+| Validation | One non-blocking High-Throughput Sending recommendation | [18](../screenshots/18-journey-validation-recommendation.png) |
 
-### Remaining checks
+## Positive path tests
 
-- Preview the *Platinum* email asset with C1003 and verify it says 'Welcome to ACME Platinum Rewards' and 'Hi David'.
-- Verify the Platinum activity is linked to the Platinum email definition, not Silver. The negative test alone does not prove the activity is misconfigured; it demonstrates that the wrong template was previewed for that customer.
-- Confirm the final Gold/Silver/Platinum message definitions and CTA destinations.
-- Do not publish actual email addresses or account-specific sender identities, and do not interpret Journey Builder Test Mode as proof of sending or delivery.
+| Test ID | Customer | Tier | Simulated route | Result | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| RT-01 | C1001 / John | Gold | Gold email activity highlighted | Pass | [21](../screenshots/21-gold-routing-test.png) |
+| RT-02 | C1002 / Sarah | Silver | Silver email activity highlighted | Pass | [22](../screenshots/22-silver-routing-test.png) |
+| RT-03 | C1003 / David | Platinum | Platinum email activity highlighted | Pass | [23](../screenshots/23-platinum-routing-test.png) |
 
-## Routing simulation retest — November 5, 2026
+**Routing test assertion pass rate: 3 / 3 = 100%.** This rate only measures the three selected simulated test cases. It is not delivery, open, click, conversion or production reliability evidence.
 
-The latest Version 2 Journey Builder Test Mode screenshots visibly highlight the expected email branch for **all three contacts**:
+Earlier simulation captures are preserved for traceability: [Gold](../screenshots/11-journey-test-gold-path.png), [Silver](../screenshots/12-journey-test-silver-path.png), [Platinum](../screenshots/13-journey-test-platinum-path.png).
 
-| Contact | Loyalty tier | Expected email activity | Simulation result | Planned image filename |
+## Message Definition mapping
+
+The Activity Summary screens show these message assets attached to the intended branches:
+
+| Branch | Activity | Message Definition | Subject | Screenshot |
 | --- | --- | --- | --- | --- |
-| C1001 / John | Gold | `Email_01_Welcome_Gold` | **Pass**: Gold route highlighted | `screenshots/21-gold-routing-test.png` |
-| C1002 / Sarah | Silver | `Email_02_Welcome_Silver` | **Pass**: Silver route highlighted | `screenshots/22-silver-routing-test.png` |
-| C1003 / David | Platinum | `Email_03_Welcome_Platinum` | **Pass**: Platinum route highlighted | `screenshots/23-platinum-routing-test.png` |
+| Gold | `Email_01_Welcome_Gold` | `Welcome_Email_Gold` | Welcome to ACME Gold Rewards! | [24](../screenshots/24-gold-message-definition.png) |
+| Silver | `Email_02_Welcome_Silver` | `Welcome_Email_Silver - 20261104_111803` | Welcome to ACME Silver Rewards! | [25](../screenshots/25-silver-message-definition.png) |
+| Platinum | `Email_03_Welcome_Platinum` | `Welcome_Email_Platinum - 20261104_111803 - 20261104_112351` | Welcome to ACME Platinum Rewards! | [26](../screenshots/26-platinum-message-definition.png) |
 
-**Routing test result:** 3/3 passed (100%) for these three synthetic contacts. This measures routing test assertions only, not message delivery, click-through, or conversion.
+## Subscriber preview tests
 
-**Publication status:** Redacted screenshots have been prepared separately. The PNGs must be uploaded into the paths above before those filenames represent published repository assets.
-
-**Next verification:** Open each Email activity's **Activity Summary** and confirm **Message Definition** matches `Welcome_Email_Gold`, `Welcome_Email_Silver`, and `Welcome_Email_Platinum` respectively. Activity labels and route simulation do not prove which actual message is linked.
-
-## Message Definition verification — November 5, 2026
-
-Activity Summary screenshots confirm that each Journey Builder Version 2 activity is mapped to a loyalty-specific Content Builder message:
-
-| Branch | Activity name | Attached Message Definition | Email subject | Result |
+| Test contact | Intended email | Observed output | Result | Screenshot |
 | --- | --- | --- | --- | --- |
-| Gold | `Email_01_Welcome_Gold` | `Welcome_Email_Gold` | Welcome to ACME Gold Rewards! | Verified |
-| Silver | `Email_02_Welcome_Silver` | `Welcome_Email_Silver - 20261104_111803` | Welcome to ACME Silver Rewards! | Verified |
-| Platinum | `Email_03_Welcome_Platinum` | `Welcome_Email_Platinum - 20261104_111803 - 20261104_112351` | Welcome to ACME Platinum Rewards! | Verified |
+| C1001 / John | Gold | 'Hi John' and Gold content | Pass | [14](../screenshots/14-gold-email-preview-final.png) |
+| C1002 / Sarah | Silver | 'Hi Sarah' and Silver content | Pass | [16](../screenshots/16-silver-email-preview.png) |
+| C1003 / David | Platinum | 'Hi David' and Platinum content; Platinum CTA label corrected | Pass | [20](../screenshots/20-platinum-email-preview.png) |
 
-**Images prepared for upload:** `screenshots/24-gold-message-definition.png`, `screenshots/25-silver-message-definition.png`, and `screenshots/26-platinum-message-definition.png`. The internal activity identifiers in the screenshot description fields have been redacted. Do not claim those files are published until they have been uploaded.
+The earlier [Gold personalisation test](../screenshots/09-gold-personalisation-test.png) is also retained.
 
-**Production-readiness checks remain:** send classification and sender profile appropriateness, opt-in and subscription status, valid CTA URLs and unsubscribe links, and expected schedule/re-entry behavior. The validated journey and 3/3 routing simulations do not establish actual email delivery.
+### Negative test / correction history
+
+A preliminary [Platinum-customer-in-Silver-preview](../screenshots/17-negative-test-platinum-in-silver-email.png) capture showed **David** being used to preview a **Silver message**. This was a wrong template selection for the preview, not evidence of an incorrectly configured journey route. A later independent Platinum preview and Message Definition check demonstrated the intended Platinum email. This negative test is kept as a concrete example of why content and journey activities must be verified separately.
+
+## Interpretation of validation
+
+[Validation screenshot](../screenshots/18-journey-validation-recommendation.png): one recommendation for **High-Throughput Sending**; no blocking error is shown. That is not equivalent to completing operational sign-off or performing a send.
+
+## Still not verified for production use
+
+- Entry filter `MarketingOptIn = True` visibly enabled and tested with an opt-out record.
+- Lawful consent provenance, suppression/subscription status, delivery/reply profiles and sender/domain approval.
+- CTA URLs and unsubscribe functionality; the link labels alone do not prove functionality.
+- Re-entry and version-transition behavior, schedule/timezone handling and a controlled send authorization.
+- Missing first name, invalid/unknown tier, invalid email, duplicate ID and opt-out negative cases.
+- Live email send/delivery/bounce/engagement telemetry; none is claimed.
+
+See [TEST_PLAN.md](TEST_PLAN.md) for acceptance criteria and the release gate.
+
+## Public evidence hygiene
+
+The published screenshots have undergone redaction preparation. Before sharing outside GitHub, inspect them for personal contact addresses, account-specific sender/organisation information, internal identifiers, business unit links and token-like values.
