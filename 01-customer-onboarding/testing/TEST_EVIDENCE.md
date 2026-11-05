@@ -68,3 +68,17 @@ The latest Version 2 Journey Builder Test Mode screenshots visibly highlight the
 **Publication status:** Redacted screenshots have been prepared separately. The PNGs must be uploaded into the paths above before those filenames represent published repository assets.
 
 **Next verification:** Open each Email activity's **Activity Summary** and confirm **Message Definition** matches `Welcome_Email_Gold`, `Welcome_Email_Silver`, and `Welcome_Email_Platinum` respectively. Activity labels and route simulation do not prove which actual message is linked.
+
+## Message Definition verification — November 5, 2026
+
+Activity Summary screenshots confirm that each Journey Builder Version 2 activity is mapped to a loyalty-specific Content Builder message:
+
+| Branch | Activity name | Attached Message Definition | Email subject | Result |
+| --- | --- | --- | --- | --- |
+| Gold | `Email_01_Welcome_Gold` | `Welcome_Email_Gold` | Welcome to ACME Gold Rewards! | Verified |
+| Silver | `Email_02_Welcome_Silver` | `Welcome_Email_Silver - 20261104_111803` | Welcome to ACME Silver Rewards! | Verified |
+| Platinum | `Email_03_Welcome_Platinum` | `Welcome_Email_Platinum - 20261104_111803 - 20261104_112351` | Welcome to ACME Platinum Rewards! | Verified |
+
+**Images prepared for upload:** `screenshots/24-gold-message-definition.png`, `screenshots/25-silver-message-definition.png`, and `screenshots/26-platinum-message-definition.png`. The internal activity identifiers in the screenshot description fields have been redacted. Do not claim those files are published until they have been uploaded.
+
+**Production-readiness checks remain:** send classification and sender profile appropriateness, opt-in and subscription status, valid CTA URLs and unsubscribe links, and expected schedule/re-entry behavior. The validated journey and 3/3 routing simulations do not establish actual email delivery.
