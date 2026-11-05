@@ -1,0 +1,4 @@
+CustomerID,EmailAddress,FirstName,LastName,State,SignupDate,LoyaltyTier,MarketingOptIn
+C1001,gold@example.com,John,Smith,NY,2026-10-22,Gold,True
+C1002,silver@example.com,Sarah,Jones,CA,2026-10-22,Silver,True
+C1003,platinum@example.com,David,Brown,TX,2026-10-22,Platinum,True
