@@ -68,3 +68,19 @@ See [TEST_PLAN.md](TEST_PLAN.md) for acceptance criteria and the release gate.
 ## Public evidence hygiene
 
 The published screenshots have undergone redaction preparation. Before sharing outside GitHub, inspect them for personal contact addresses, account-specific sender/organisation information, internal identifiers, business unit links and token-like values.
+
+## Journey activity progression — November 13, 2026
+
+A subsequent Journey Builder screenshot shows activity-level contact counts following the scheduled entry evaluation:
+
+| Activity | Count visible | Interpretation |
+| --- | ---: | --- |
+| Loyalty Decision Split | 3 | Three contacts reached split activity |
+| Gold Email activity | 1 | One contact appears on Gold email path |
+| Silver Email activity | 1 | One contact appears on Silver email path |
+| Platinum Email activity | 1 | One contact appears on Platinum email path |
+| Gold/Silver/Platinum exit activities | 1 each | Each path shows one contact exit |
+
+**Evidence file pending upload:** `../screenshots/27-journey-execution-results.png`. The screenshot was prepared locally but is not yet verified in this GitHub repository.
+
+These counters demonstrate **journey progression**, but do not alone prove emails were delivered. Check Salesforce Email Analytics (sent, delivered, bounced and not-sent) and the controlled inboxes before claiming successful delivery.
